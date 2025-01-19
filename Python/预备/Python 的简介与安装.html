@@ -1,0 +1,257 @@
+
+<html lang="zh" style="height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Primers - Learn to Program From Scratch</title>
+    <meta name="description" content="Programming tutorials including Python, Lua and etc. - ">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <style>
+        :root {
+            --bulma-body-overflow-y: auto;
+        }
+
+        .aside-menu {
+            padding: 16px;
+            height: 100%;
+            width: 300px;
+            overflow: auto;
+        }
+
+        @media (max-width: 768px) {
+            .aside-menu {
+                position: absolute;
+                z-index: 10;
+                padding: 0;
+                height: 100%;
+                width: 0;
+                overflow: hidden;
+                transition: all 1s ease; 
+            }
+
+            .aside-menu.is-active {
+                position: absolute;
+                padding: 16px;
+                height: 100%;
+                width: 90%;
+                overflow-x: hidden;
+                overflow-y: auto;
+                transition: all 1s ease;
+            }
+        }
+
+        pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #F00 } /* Error */
+.highlight .k { color: #A2F; font-weight: bold } /* Keyword */
+.highlight .o { color: #666 } /* Operator */
+.highlight .ch { color: #080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #080 } /* Comment.Preproc */
+.highlight .cpf { color: #080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #080; font-weight: bold } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #F00 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #04D } /* Generic.Traceback */
+.highlight .kc { color: #A2F; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #A2F; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #A2F; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #A2F } /* Keyword.Pseudo */
+.highlight .kr { color: #A2F; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #0B0; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #666 } /* Literal.Number */
+.highlight .s { color: #B44 } /* Literal.String */
+.highlight .na { color: #B44 } /* Name.Attribute */
+.highlight .nb { color: #A2F } /* Name.Builtin */
+.highlight .nc { color: #00F } /* Name.Class */
+.highlight .no { color: #800 } /* Name.Constant */
+.highlight .nd { color: #A2F } /* Name.Decorator */
+.highlight .ni { color: #999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #00A000 } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #B8860B } /* Name.Variable */
+.highlight .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666 } /* Literal.Number.Float */
+.highlight .mh { color: #666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666 } /* Literal.Number.Oct */
+.highlight .sa { color: #B44 } /* Literal.String.Affix */
+.highlight .sb { color: #B44 } /* Literal.String.Backtick */
+.highlight .sc { color: #B44 } /* Literal.String.Char */
+.highlight .dl { color: #B44 } /* Literal.String.Delimiter */
+.highlight .sd { color: #B44; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #B44 } /* Literal.String.Double */
+.highlight .se { color: #B62; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #B44 } /* Literal.String.Heredoc */
+.highlight .si { color: #B68; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #B68 } /* Literal.String.Regex */
+.highlight .s1 { color: #B44 } /* Literal.String.Single */
+.highlight .ss { color: #B8860B } /* Literal.String.Symbol */
+.highlight .bp { color: #A2F } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #00A000 } /* Name.Function.Magic */
+.highlight .vc { color: #B8860B } /* Name.Variable.Class */
+.highlight .vg { color: #B8860B } /* Name.Variable.Global */
+.highlight .vi { color: #B8860B } /* Name.Variable.Instance */
+.highlight .vm { color: #B8860B } /* Name.Variable.Magic */
+.highlight .il { color: #666 } /* Literal.Number.Integer.Long */
+    </style>
+    <script>
+        function toggleNavTabs(query) {
+            const nodes = document.querySelectorAll(query);
+            for (const node of nodes) {
+                if (node.classList.contains('is-active')) {
+                    node.classList.remove('is-active')
+                } else {
+                    node.classList.add('is-active')
+                }
+            }
+        }
+    </script>
+</head>
+
+<body style="height: 100%;">
+    <div id="root" class="is-flex is-flex-direction-column" style="height: 100%;">
+        <nav class="navbar is-primary" role="navigation" >
+            
+            <div class="navbar-brand">
+                <button class="button is-primary is-hidden-desktop" onclick="toggleNavTabs('.aside-menu')">
+                    <span class="icon is-small has-text-white">
+                        <i class="fa-solid fa-right-left"></i>
+                    </span>
+                </button>
+                <a class="navbar-item" href="https://hubenchang0515.github.io/Primers">
+                    <p class="title has-text-white">Primers</p>
+                </a>
+
+                <a class="navbar-burger has-text-white" role="button" onclick="toggleNavTabs('.navbar-menu,.navbar-burger')">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navtabs" class="navbar-menu is-white">
+                <div class="navbar-start">
+                    
+                        
+                    
+                        
+                            
+                                <a class="navbar-item has-text-white" href="https://hubenchang0515.github.io/Primers/Python/index.html">Python</a>
+                            
+                        
+                    
+                        
+                    
+                </div>
+            </div>
+        </nav>
+        
+        <div class="is-flex is-flex-grow-1 is-flex-direction-row">
+            
+                <aside class="aside-menu menu has-background-success">
+                    
+                        
+                            <ul class="menu-list">
+                                
+                                    <li><a class="has-background-success has-text-light" href="https://hubenchang0515.github.io/Primers/Python/index.html">index</a></li>
+                                
+                            </ul>
+                        
+                    
+                        
+                            <p class="menu-label has-text-white">预备</p>
+                            <ul class="menu-list">
+                                
+                                    
+                                        <li><a class="has-background-info has-text-white" href="https://hubenchang0515.github.io/Primers/Python/Python%20%E7%9A%84%E7%AE%80%E4%BB%8B%E4%B8%8E%E5%AE%89%E8%A3%85.html">Python 的简介与安装</a></li>
+                                    
+                                
+                                    
+                                        <li><a class="has-background-success has-text-light" href="https://hubenchang0515.github.io/Primers/Python/%E9%A2%84%E5%A4%87/%E7%AC%AC%E4%B8%80%E8%A1%8C%E4%BB%A3%E7%A0%81.html">第一行代码</a></li>
+                                    
+                                
+                            </ul>
+                        
+                    
+                        
+                            <p class="menu-label has-text-white">基础语法</p>
+                            <ul class="menu-list">
+                                
+                            </ul>
+                        
+                    
+                </aside>
+            
+
+            <div class="is-flex-grow-1 container is-flex is-flex-direction-column p-1">
+                <div class="content is-flex-grow-1">
+                    <h1 id='ed9dfd' class='title is-1'><a class='has-text-info' href='#ed9dfd'>#</a> Python 简介</h1><p class='content'>Python 是一门易于学习、功能强大的编程语言。它提供了高效的高级数据结构，还能简单有效地面向对象编程。Python 优雅的语法和动态类型以及解释型语言的本质，使它成为多数平台上写脚本和快速开发应用的理想语言。</p><h2 id='e8f88f' class='title is-2'><a class='has-text-info' href='#e8f88f'>#</a> 安装</h2><h3 id='d59802' class='title is-3'><a class='has-text-info' href='#d59802'>#</a> Windows</h3><p class='content'>从 <a class='has-text-info' href='https://www.python.org/'>Python 的官网</a> 下载安装包：</p><p class='content'><img src="/Primers/resource/python/download.png" alt="Download Python" /></p><p class='content'>运行安装程序，勾选 <code class='has-text-danger'>Add python.exe to PATH</code>，点击 <code class='has-text-danger'>Install Now</code> 开始安装:</p><p class='content'><img src="/Primers/resource/python/install.png" alt="Install Python" /></p><p class='content'>等待安装完成后，按 <code class='has-text-danger'>Win</code> + <code class='has-text-danger'>R</code>，输入 <code class='has-text-danger'>powershell</code>，点击确定，打开 PowerShell：</p><p class='content'><img src="/Primers/resource/python/win+r.png" alt="Win + R" /></p><p class='content'>在启动的一个黑色窗口中输入 <code class='has-text-danger'>python</code>，然后按 <code class='has-text-danger'>回车健(Enter)</code>：</p><p class='content'><img src="/Primers/resource/python/powershell.png" alt="powershell" /></p><p class='content'>如图所示即为安装成功。</p><h3 id='4828e6' class='title is-3'><a class='has-text-info' href='#4828e6'>#</a> Linux</h3><p class='content'>APT:</p><pre><code>sudo apt install python3 python-is-python3
+</code></pre>
+<p class='content'>YUM:</p><pre><code>sudo yum install python3 python-is-python3
+</code></pre>
+<p class='content'>其他包管理器也是类似的方式。</p><h3 id='ba3cb0' class='title is-3'><a class='has-text-info' href='#ba3cb0'>#</a> MacOS</h3><p class='content'>从Python 的官网下载 <a class='has-text-info' href='https://www.python.org/downloads/macos/'>MacOS 版本的安装包</a> 进行安装：</p><p class='content'><img src="/Primers/resource/python/macos.png" alt="MacOS" /></p>
+                </div>
+
+                <div class="content">
+                    <div class="notification">
+                        此页 更新于: 2025-01-19 23:19:59 创建于: 2025-01-19 23:19:59
+                    </div>
+                </div>
+
+                <div>
+                    <script src="https://giscus.app/client.js"
+                        data-repo="hubenchang0515/Primers"
+                        data-repo-id="R_kgDONsZmvQ"
+                        data-category="Announcements"
+                        data-category-id="DIC_kwDONsZmvc4CmJzV"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="preferred_color_scheme"
+                        data-lang="zh-CN"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+                </div>
+
+                <footer>
+                    <div class="has-text-centered">
+                        Powered by <a class="has-text-primary" href="https://github.com/hubenchang0515/Primers">Primers</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <div class="has-text-centered" style="position: fixed; bottom: 8px; right: 8px">
+            <a class="github-button" href="https://github.com/hubenchang0515/Primers" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star hubenchang0515/Primers on GitHub">Star</a>
+        </div>
+    </div>
+</body>
+</html>

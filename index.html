@@ -1,0 +1,224 @@
+
+<html lang="zh" style="height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Primers - Learn to Program From Scratch</title>
+    <meta name="description" content="Programming tutorials including Python, Lua and etc. - ">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <style>
+        :root {
+            --bulma-body-overflow-y: auto;
+        }
+
+        .aside-menu {
+            padding: 16px;
+            height: 100%;
+            width: 300px;
+            overflow: auto;
+        }
+
+        @media (max-width: 768px) {
+            .aside-menu {
+                position: absolute;
+                z-index: 10;
+                padding: 0;
+                height: 100%;
+                width: 0;
+                overflow: hidden;
+                transition: all 1s ease; 
+            }
+
+            .aside-menu.is-active {
+                position: absolute;
+                padding: 16px;
+                height: 100%;
+                width: 90%;
+                overflow-x: hidden;
+                overflow-y: auto;
+                transition: all 1s ease;
+            }
+        }
+
+        pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #F00 } /* Error */
+.highlight .k { color: #A2F; font-weight: bold } /* Keyword */
+.highlight .o { color: #666 } /* Operator */
+.highlight .ch { color: #080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #080 } /* Comment.Preproc */
+.highlight .cpf { color: #080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #080; font-weight: bold } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #F00 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #04D } /* Generic.Traceback */
+.highlight .kc { color: #A2F; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #A2F; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #A2F; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #A2F } /* Keyword.Pseudo */
+.highlight .kr { color: #A2F; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #0B0; font-weight: bold } /* Keyword.Type */
+.highlight .m { color: #666 } /* Literal.Number */
+.highlight .s { color: #B44 } /* Literal.String */
+.highlight .na { color: #B44 } /* Name.Attribute */
+.highlight .nb { color: #A2F } /* Name.Builtin */
+.highlight .nc { color: #00F } /* Name.Class */
+.highlight .no { color: #800 } /* Name.Constant */
+.highlight .nd { color: #A2F } /* Name.Decorator */
+.highlight .ni { color: #999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #00A000 } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #00F; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #B8860B } /* Name.Variable */
+.highlight .ow { color: #A2F; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666 } /* Literal.Number.Float */
+.highlight .mh { color: #666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666 } /* Literal.Number.Oct */
+.highlight .sa { color: #B44 } /* Literal.String.Affix */
+.highlight .sb { color: #B44 } /* Literal.String.Backtick */
+.highlight .sc { color: #B44 } /* Literal.String.Char */
+.highlight .dl { color: #B44 } /* Literal.String.Delimiter */
+.highlight .sd { color: #B44; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #B44 } /* Literal.String.Double */
+.highlight .se { color: #B62; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #B44 } /* Literal.String.Heredoc */
+.highlight .si { color: #B68; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #B68 } /* Literal.String.Regex */
+.highlight .s1 { color: #B44 } /* Literal.String.Single */
+.highlight .ss { color: #B8860B } /* Literal.String.Symbol */
+.highlight .bp { color: #A2F } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #00A000 } /* Name.Function.Magic */
+.highlight .vc { color: #B8860B } /* Name.Variable.Class */
+.highlight .vg { color: #B8860B } /* Name.Variable.Global */
+.highlight .vi { color: #B8860B } /* Name.Variable.Instance */
+.highlight .vm { color: #B8860B } /* Name.Variable.Magic */
+.highlight .il { color: #666 } /* Literal.Number.Integer.Long */
+    </style>
+    <script>
+        function toggleNavTabs(query) {
+            const nodes = document.querySelectorAll(query);
+            for (const node of nodes) {
+                if (node.classList.contains('is-active')) {
+                    node.classList.remove('is-active')
+                } else {
+                    node.classList.add('is-active')
+                }
+            }
+        }
+    </script>
+</head>
+
+<body style="height: 100%;">
+    <div id="root" class="is-flex is-flex-direction-column" style="height: 100%;">
+        <nav class="navbar is-primary" role="navigation" >
+            
+            <div class="navbar-brand">
+                <button class="button is-primary is-hidden-desktop" onclick="toggleNavTabs('.aside-menu')">
+                    <span class="icon is-small has-text-white">
+                        <i class="fa-solid fa-right-left"></i>
+                    </span>
+                </button>
+                <a class="navbar-item" href="https://hubenchang0515.github.io/Primers">
+                    <p class="title has-text-white">Primers</p>
+                </a>
+
+                <a class="navbar-burger has-text-white" role="button" onclick="toggleNavTabs('.navbar-menu,.navbar-burger')">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navtabs" class="navbar-menu is-white">
+                <div class="navbar-start">
+                    
+                        
+                    
+                        
+                            
+                                <a class="navbar-item has-text-light" href="https://hubenchang0515.github.io/Primers/Python/index.html">Python</a>
+                            
+                        
+                    
+                        
+                    
+                </div>
+            </div>
+        </nav>
+        
+        <div class="is-flex is-flex-grow-1 is-flex-direction-row">
+            
+
+            <div class="is-flex-grow-1 container is-flex is-flex-direction-column p-1">
+                <div class="content is-flex-grow-1">
+                    <h1 id='d09242' class='title is-1'><a class='has-text-info' href='#d09242'>#</a> Primers - Learn to Program From Scratch</h1><div class=' notification is-info has-text-light'>欢迎来到 Primers ———— 你的编程学习伙伴。</div><p class='content'>Primers 致力于为各类编程学习者提供全面、系统的编程教程和实践资源。无论你是编程新手，还是有一定基础的开发者，Primers 都提供了适合的学习路径和丰富的实战项目，帮助你从零开始，逐步掌握编程技能，成为一名优秀的开发者。</p><p class='content'><strong>Primers 的特色</strong>：</p><div class='content'><ul><li><strong>全面的知识体系</strong>：覆盖Python<del>、JavaScript、Java、C++、前端、后端</del>等多个技术栈，适合各个阶段的学习者。</li>
+<li><strong>实战项目驱动</strong>：理论与实践相结合，每个课程都配有实际项目，帮助你巩固知识，解决实际问题。</li>
+<li><strong>互动式学习体验</strong>：提供<a class='has-text-info' href='https://hubenchang0515.github.io/shift/'>在线编程环境</a>、社区互动和答疑支持，解决你的学习疑惑。</li>
+<li><strong>自主学习进度</strong>：灵活的学习方式，可以根据个人节奏安排学习计划，随时随地进行学习。</li>
+<li><strong>跨平台学习支持</strong>：无论你是在电脑、手机还是平板上学习，Primers 都能无缝适配，确保你随时随地都可以进行学习，充分利用碎片时间，提升效率。</li>
+</ul></div><h2 id='6d4588' class='title is-2'><a class='has-text-info' href='#6d4588'>#</a> 在线编程环境</h2><p class='content'>Primers 基于 <a class='has-text-info' href='https://github.com/hubenchang0515/shift'>Shift</a> 提供在线编程环境，这是一个示例:</p> <iframe width='100%' height='600' src='https://hubenchang0515.github.io/shift/?lane=python&input=MTA=&code=ZGVmJTIwZ2VuZXJhdGVfeWFuZ2h1aV90cmlhbmdsZSUyOHJvd3MlMjklM0ElMEElMjAlMjAlMjAlMjAlMjIlMjIlMjIlMEElMjAlMjAlMjAlMjAlRTclOTQlOUYlRTYlODglOTAlRTYlOUQlQTglRTglQkUlODklRTQlQjglODklRTglQTclOTIlRTclOUElODQlRTUlODklOEQlMjByb3dzJTIwJUU4JUExJThDJUUzJTgwJTgyJTBBJTIwJTIwJTIwJTIwJTBBJTIwJTIwJTIwJTIwJTNBcGFyYW0lMjByb3dzJTNBJTIwJUU2JTlEJUE4JUU4JUJFJTg5JUU0JUI4JTg5JUU4JUE3JTkyJUU3JTlBJTg0JUU4JUExJThDJUU2JTk1JUIwJTBBJTIwJTIwJTIwJTIwJTNBcmV0dXJuJTNBJTIwJUU0JUI4JTgwJUU0JUI4JUFBJUU1JTg4JTk3JUU4JUExJUE4JUVGJUJDJThDJUU1JThDJTg1JUU1JTkwJUFCJUU2JTlEJUE4JUU4JUJFJTg5JUU0JUI4JTg5JUU4JUE3JTkyJUU3JTlBJTg0JUU4JUExJThDJTBBJTIwJTIwJTIwJTIwJTIyJTIyJTIyJTBBJTIwJTIwJTIwJTIwdHJpYW5nbGUlMjAlM0QlMjAlNUIlNUQlMEElMjAlMjAlMjAlMjBmb3IlMjBpJTIwaW4lMjByYW5nZSUyOHJvd3MlMjklM0ElMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjMlMjAlRTUlODglOUQlRTUlQTclOEIlRTUlOEMlOTYlRTUlQkQlOTMlRTUlODklOEQlRTglQTElOEMlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjByb3clMjAlM0QlMjAlNUIxJTVEJTIwJTJBJTIwJTI4aSUyMCUyQiUyMDElMjklMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjMlMjAlRTUlQTElQUIlRTUlODUlODUlRTklOUQlOUUlRTglQkUlQjklRTclOTUlOEMlRTclOUElODQlRTUlODAlQkMlMEElMjAlMjAlMjAlMjAlMjAlMjAlMjAlMjBmb3IlMjBqJTIwaW4lMjByYW5nZSUyODElMkMlMjBpJTI5JTNBJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwcm93JTVCaiU1RCUyMCUzRCUyMHRyaWFuZ2xlJTVCaSUyMC0lMjAxJTVEJTVCaiUyMC0lMjAxJTVEJTIwJTJCJTIwdHJpYW5nbGUlNUJpJTIwLSUyMDElNUQlNUJqJTVEJTBBJTIwJTIwJTIwJTIwJTIwJTIwJTIwJTIwdHJpYW5nbGUuYXBwZW5kJTI4cm93JTI5JTBBJTIwJTIwJTIwJTIwcmV0dXJuJTIwdHJpYW5nbGUlMEElMEFkZWYlMjBwcmludF95YW5naHVpX3RyaWFuZ2xlJTI4dHJpYW5nbGUlMjklM0ElMEElMjAlMjAlMjAlMjAlMjIlMjIlMjIlMEElMjAlMjAlMjAlMjAlRTYlODklOTMlRTUlOEQlQjAlRTYlOUQlQTglRTglQkUlODklRTQlQjglODklRTglQTclOTIlRTMlODAlODIlMEElMjAlMjAlMjAlMjAlMEElMjAlMjAlMjAlMjAlM0FwYXJhbSUyMHRyaWFuZ2xlJTNBJTIwJUU2JTlEJUE4JUU4JUJFJTg5JUU0JUI4JTg5JUU4JUE3JTkyJUU3JTlBJTg0JUU1JTg4JTk3JUU4JUExJUE4JTBBJTIwJTIwJTIwJTIwJTIyJTIyJTIyJTBBJTIwJTIwJTIwJTIwbWF4X3dpZHRoJTIwJTNEJTIwbGVuJTI4JTIyJTIwJTIyLmpvaW4lMjhtYXAlMjhzdHIlMkMlMjB0cmlhbmdsZSU1Qi0xJTVEJTI5JTI5JTI5JTIwJTIwJTIzJTIwJUU4JUFFJUExJUU3JUFFJTk3JUU2JTlDJTgwJUU1JTkwJThFJUU0JUI4JTgwJUU4JUExJThDJUU3JTlBJTg0JUU1JUFFJUJEJUU1JUJBJUE2JTBBJTIwJTIwJTIwJTIwZm9yJTIwcm93JTIwaW4lMjB0cmlhbmdsZSUzQSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHJvd19zdHIlMjAlM0QlMjAlMjIlMjAlMjIuam9pbiUyOG1hcCUyOHN0ciUyQyUyMHJvdyUyOSUyOSUwQSUyMCUyMCUyMCUyMCUyMCUyMCUyMCUyMHByaW50JTI4cm93X3N0ci5jZW50ZXIlMjhtYXhfd2lkdGglMjklMjklMEElMEElMjMlMjAlRTclQTQlQkElRTQlQkUlOEIlRUYlQkMlOUElRTclOTQlOUYlRTYlODglOTAlRTUlQjklQjYlRTYlODklOTMlRTUlOEQlQjAlRTUlODklOEQlMjAxMCUyMCVFOCVBMSU4QyVFNyU5QSU4NCVFNiU5RCVBOCVFOCVCRSU4OSVFNCVCOCU4OSVFOCVBNyU5MiUwQXJvd3MlMjAlM0QlMjBpbnQlMjhpbnB1dCUyOCUyMlBsZWFzZSUyMElucHV0JTIwUm93cyUzQSUyMCUyMiUyOSUyOSUwQXlhbmdodWlfdHJpYW5nbGUlMjAlM0QlMjBnZW5lcmF0ZV95YW5naHVpX3RyaWFuZ2xlJTI4cm93cyUyOSUwQXByaW50X3lhbmdodWlfdHJpYW5nbGUlMjh5YW5naHVpX3RyaWFuZ2xlJTI5JTBB'></iframe>
+                </div>
+
+                <div class="content">
+                    <div class="notification">
+                        此页 更新于: 2025-01-19 20:04:43 创建于: 2025-01-19 20:04:43
+                    </div>
+                </div>
+
+                <div>
+                    <script src="https://giscus.app/client.js"
+                        data-repo="hubenchang0515/Primers"
+                        data-repo-id="R_kgDONsZmvQ"
+                        data-category="Announcements"
+                        data-category-id="DIC_kwDONsZmvc4CmJzV"
+                        data-mapping="pathname"
+                        data-strict="0"
+                        data-reactions-enabled="1"
+                        data-emit-metadata="0"
+                        data-input-position="bottom"
+                        data-theme="preferred_color_scheme"
+                        data-lang="zh-CN"
+                        crossorigin="anonymous"
+                        async>
+                </script>
+                </div>
+
+                <footer>
+                    <div class="has-text-centered">
+                        Powered by <a class="has-text-primary" href="https://github.com/hubenchang0515/Primers">Primers</a>
+                    </div>
+                </footer>
+            </div>
+        </div>
+
+        <div class="has-text-centered" style="position: fixed; bottom: 8px; right: 8px">
+            <a class="github-button" href="https://github.com/hubenchang0515/Primers" data-color-scheme="no-preference: light; light: light; dark: dark;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star hubenchang0515/Primers on GitHub">Star</a>
+        </div>
+    </div>
+</body>
+</html>
